@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-c -Wall -std=c++11
 LDFLAGS=
-SOURCES=test.cpp
+SOURCES=test.cpp BUnit.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=BUnit
 

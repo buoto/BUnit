@@ -12,19 +12,17 @@ class TestCase{
 	    TestCase() { }
    
     public:
-		TestCase(void (TestCase::*name)()) {
-			this->name = name;
-		}
+		TestCase(void (TestCase::*name)());
 
         virtual void setUp(){}
 		
-		virtual void run() {
-			this->setUp();
-			(this->*name)();
-			this->tearDown();
-		}
-
-		virtual void tearDown() {}
+        virtual void run() {
+            this->setUp();
+            (this->*name)();
+            this->tearDown();
+        }
+		
+        virtual void tearDown() {}
 		virtual ~TestCase() {}
 };
 
@@ -35,17 +33,9 @@ class TestSuite : TestCase {
         std::vector<TestCase*> tests;
     public:
         TestSuite() {}
-        void add(TestCase* test) {
-            this->tests.push_back(test);
-        }
-        
-        void run() {
-            for(auto it = this->tests.begin(); 
-                it != this->tests.end(); it++) {
-                (*it)->run();
-            }
-            std::cout << "All tests passed." << std::endl;
-        }
+        void add(TestCase* test);
+        void run();
+
 };
 
 #endif
