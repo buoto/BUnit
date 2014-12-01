@@ -9,11 +9,11 @@ class WasRun : public TestCase {
 		: TestCase(static_cast<void (TestCase::*)()>(name)) {
 			wasSetUp = false;
 		}
-		
+
 		void testMethod() {
 			wasRun = true;
 		}
-		
+
 		void setUp(){
 			wasSetUp = true;
 			wasRun = false;
@@ -27,13 +27,13 @@ class WasRun : public TestCase {
 		bool getWasRun() {
 			return wasRun;
 		}
-		
+
 		bool getWasSetUp() {
 			return wasSetUp;
 		}
 
 		bool getWasTearDown() {
-			return wasTearDown;	
+			return wasTearDown;
 		}
 };
 
@@ -42,17 +42,15 @@ class TestCaseTest : public TestCase {
 		WasRun* test;
 
 		void setUp() {
-			test = new WasRun(&WasRun::testMethod);	
+			test = new WasRun(&WasRun::testMethod);
 		}
-		
+
 		void tearDown(){
 			delete(test);
-		}		
-	public:
-		TestCaseTest(void (TestCaseTest::*name)()) 
-		: TestCase(static_cast<void (TestCase::*)()>(name)) {
 		}
-		
+    public:
+        CLASSNAME(TestCaseTest)
+
 		void testRunning() {
 			assert(false == test->getWasRun());
 			test->run();
@@ -72,11 +70,7 @@ class TestCaseTest : public TestCase {
 
 
 
-
-int main() {
-    TestSuite suite;
-    suite.add(new TestCaseTest(&TestCaseTest::testSetUp));
-    suite.add(new TestCaseTest(&TestCaseTest::testTearDown));
-    suite.run();
-    return 0;
-}
+TESTS
+ADD(TestCaseTest, testSetUp)
+ADD(TestCaseTest, testTearDown)
+RUN
