@@ -1,4 +1,4 @@
-#ifndef BUNIT_H 
+#ifndef BUNIT_H
 #define BUNIT_H
 
 #include<iostream>
@@ -7,23 +7,23 @@
 
 
 class TestCase{
-	protected:
-		void (TestCase::*name)();
-	    TestCase() { }
-   
+    protected:
+        void (TestCase::*name)();
+        TestCase() { }
+
     public:
-		TestCase(void (TestCase::*name)());
+        TestCase(void (TestCase::*name)());
 
         virtual void setUp(){}
-		
+
         virtual void run() {
             this->setUp();
             (this->*name)();
             this->tearDown();
         }
-		
+
         virtual void tearDown() {}
-		virtual ~TestCase() {}
+        virtual ~TestCase() {}
 };
 
 typedef void (TestCase::*CallbackType)();

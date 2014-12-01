@@ -1,7 +1,7 @@
 #include "BUnit.h"
 
 TestCase::TestCase(void (TestCase::*name)()) {
-	this->name = name;
+    this->name = name;
 }
 
 void TestSuite::add(TestCase* test) {
@@ -9,7 +9,7 @@ void TestSuite::add(TestCase* test) {
 }
 
 void TestSuite::run() {
-    for(auto it = this->tests.begin(); 
+    for(auto it = this->tests.begin();
         it != this->tests.end(); it++) {
         (*it)->run();
     }
