@@ -3,7 +3,7 @@
 Ultra lightweight testing environment inspired by XUnit example from Kent's Beck "TDD" book.
 
 #Installation
-To install library type `sudo make install`.
+To install library simply type `sudo make install`.
 
 #Usage
 
