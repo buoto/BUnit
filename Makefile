@@ -12,7 +12,8 @@ all:
 	$(CC) -shared -o $(LIBRARY) $(SOURCES:.cpp=.o)
 
 install: all
-	install BUnit.h -D /usr/include/bunit/
+	mkdir /usr/include/bunit
+	install BUnit.h /usr/include/bunit/
 	install libbunit.so /usr/lib/
 
 test: $(TEST) $(EXECUTABLE)
