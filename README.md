@@ -2,9 +2,12 @@
 =====
 Ultra lightweight testing environment inspired by XUnit example from Kent's Beck "TDD" book.
 
+#Installation
+To install library type `sudo make install`.
+
 #Usage
 
-    #include "BUnit.h"
+    #include <bunit/BUnit.h>
 
     class FooTestCase : public TestCase {
         private:
@@ -28,6 +31,8 @@ Ultra lightweight testing environment inspired by XUnit example from Kent's Beck
     TESTS
     ADD(FooTestCase, barMethod)
     RUN
+
+Remember to add `-lbunit` to your compile flags.
 
 #Contents
 - BUnit.h - header including test classes
