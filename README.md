@@ -19,7 +19,7 @@ To install library simply type `sudo make install`.
             }
 
         public:
-            CLASSNAME(FootestCase)
+            CLASSNAME(FooTestCase)
 
             void barMethod() {
                 // stuff
