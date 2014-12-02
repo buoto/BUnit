@@ -5,14 +5,25 @@
 
 #define TESTS int main() { TestSuite suite;
 #define ADD(cl, t) suite.add(new cl(&cl::t));
-#define RUN suite.run(); return 0;}
+#define RUN return suite.run();}
+
+#define assert(x) this->assert_(x, #x, __PRETTY_FUNCTION__, __FILE__, __LINE__)
 
 #include<iostream>
-#include<cassert>
 #include<vector>
 
+struct FailedAssertError {
+    std::string condition;
+    std::string function;
+    std::string file;
+    int line;
+};
 
-class TestCase{
+class TestSuite;
+
+class TestCase {
+    friend class TestSuite;
+
     protected:
         void (TestCase::*name)();
         TestCase() { }
@@ -30,17 +41,26 @@ class TestCase{
 
         virtual void tearDown() {}
         virtual ~TestCase() {}
+
+    protected:
+        virtual void assert_(bool cond, std::string condStr, std::string prettyFunction, std::string file, int line) {
+            if(!cond) {
+                throw new FailedAssertError{condStr, prettyFunction, file, line};
+            }
+        }
 };
 
 typedef void (TestCase::*CallbackType)();
 
-class TestSuite : TestCase {
+class TestSuite {
     protected:
         std::vector<TestCase*> tests;
     public:
         TestSuite() {}
         void add(TestCase* test);
-        void run();
+        int run();
+    private:
+        std::string parseTestName(const std::string& prettyFunction);
 
 };
 
