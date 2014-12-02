@@ -12,7 +12,7 @@ all:
 	$(CC) -shared -o $(LIBRARY) $(SOURCES:.cpp=.o)
 
 install: all
-	mkdir /usr/include/bunit
+	mkdir -p /usr/include/bunit
 	install BUnit.h /usr/include/bunit/
 	install libbunit.so /usr/lib/
 
