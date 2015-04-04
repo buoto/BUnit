@@ -1,4 +1,4 @@
-#include <bunit/BUnit.h>
+#include "BUnit.h"
 
 class WasRun : public TestCase {
 		bool wasRun;
