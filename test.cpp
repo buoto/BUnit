@@ -8,6 +8,7 @@ class WasRun : public TestCase {
 		WasRun(void (WasRun::*name)())
 		: TestCase(static_cast<void (TestCase::*)()>(name)) {
 			wasSetUp = false;
+			wasRun = false;
 		}
 
 		void testMethod() {
@@ -16,7 +17,6 @@ class WasRun : public TestCase {
 
 		void setUp(){
 			wasSetUp = true;
-			wasRun = false;
 			wasTearDown = false;
 		}
 
@@ -73,4 +73,5 @@ class TestCaseTest : public TestCase {
 TESTS
 ADD(TestCaseTest, testSetUp)
 ADD(TestCaseTest, testTearDown)
+ADD(TestCaseTest, testRunning)
 RUN
