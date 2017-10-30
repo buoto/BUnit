@@ -1,11 +1,11 @@
-[BUnit](http://github.com/buoto/BUnit)
+BUnit
 =====
 Ultra lightweight testing environment inspired by XUnit example from Kent's Beck "TDD" book.
 
-#Installation
+# Installation
 To install library simply type `sudo make install`.
 
-#Usage
+# Usage
 
     #include <bunit/BUnit.h>
 
@@ -34,6 +34,6 @@ To install library simply type `sudo make install`.
 
 Remember to add `-lbunit` to your compile flags.
 
-#Contents
+# Contents
 - BUnit.h - header including test classes
 - test.cpp - usage example
